@@ -1,0 +1,10 @@
+tags
+test.sh
+.luarc.json
+nvim
+
+spell/
+
+*.swp
+*.swx
+*.bak
