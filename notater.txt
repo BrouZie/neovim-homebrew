@@ -1,0 +1,37 @@
+Installs:
+
+Webi: (ps. follow instructions in terminal!!)
+
+	Golang:
+		more-toocome
+	Dotenv
+	gh (GitHub)
+	rg (RipGrep)
+	pyenv (added to .bashrc: export PYENV_ROOT="$HOME/.pyenv"
+		[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+		eval "$(pyenv init - bash)" )
+	fd (alternative to find)
+
+Python:
+	pip
+	pynvim 0.5.2
+	sudo apt install -y python3-pip python3-venv (viktig for ruff/python neovim setup) 
+
+Neovim med appimage (0.11.1)
+npm via nvm version 22.16.0 (LTS)
+
+sudo apt install:
+	git-all
+
+
+luarocks?
+
+forandre vim.o vim.opts osv. i remap.lua
+fundere litt på det der med which-key
+flere plugins bbyyyyyyy
+
+
+TODO:
+
+Fiks filsystem
+	load lazy plugins fra dir "plugins"
