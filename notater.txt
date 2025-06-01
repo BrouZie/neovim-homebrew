@@ -16,6 +16,7 @@ Python:
 	pip
 	pynvim 0.5.2
 	sudo apt install -y python3-pip python3-venv (viktig for ruff/python neovim setup) 
+	satt opp .virtualenvs/neovim-p-host 
 
 Neovim med appimage (0.11.1)
 npm via nvm version 22.16.0 (LTS)

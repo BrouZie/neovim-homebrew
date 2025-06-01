@@ -1,11 +1,12 @@
 local config = require('mason-tool-installer')
 config.setup({
-	ensure_installed = { 'prettier', 'mypy', 'black', 'ruff', 'lua_ls', 'gopls', 'pylsp' }
+	ensure_installed = { 'debugpy', 'mypy', 'black', 'pylint', 'flake8', 'isort', 'lua_ls', 'gopls', 'pyright', 'bashls' }
 
 })
 
+vim.lsp.enable( 'bashls' )
 vim.lsp.enable( 'gopls' )
-vim.lsp.enable( 'pylsp' )
+vim.lsp.enable( 'pyright' )
 vim.lsp.enable( 'lua_ls' )
 
 -- Added from :help lspconfig-all
@@ -58,20 +59,23 @@ vim.lsp.config('lua_ls', {
 	}
 })
 
--- Got from youtube: https://www.youtube.com/watch?v=IobijoroGE0
-vim.lsp.config('pylsp', {
-	settings = {
-		pylsp = {
-			plugins = {
-				pyflakes = { enabled = false },
-				pycodestyle = { enabled = false },
-				autopep8 = { enabled = false },
-				yapf = { enabled = false },
-				mccabe = { enabled = false },
-				pylsp_mypy = { enabled = false },
-				pylsp_black = { enabled = false },
-				pylsp_isort = { enabled = false },
-			}
-		}
-	}
+vim.lsp.config('pyright', {
+	  settings = {
+    python = {
+      analysis = {
+        -- Let Pyright inspect all files in your workspace, not just buffers you currently have open
+        diagnosticMode        = "workspace",
+        -- Auto‐add any paths found in sys.path (venv, installed packages, etc.)
+        autoSearchPaths       = true,
+        -- If you import modules from your project root, add "." to extraPaths
+        extraPaths            = { "." },
+        -- Make Pyright use type stubs from installed libraries, if available
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
+
+  -- Make sure the LSP root is detected properly (often Neovim’s default is fine,
+  -- but you can customize root_dir if you have nested and/or monorepo layouts):
+  -- root_dir = require("lspconfig.util").root_pattern("pyproject.toml", "setup.py", ".git"),
 })

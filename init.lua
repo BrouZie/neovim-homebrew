@@ -1,16 +1,18 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.g.python3_host_prog = os.getenv('HOME') .. '/.virtualenvs/neovim-p-host/bin/python3.12' -- Viktig for python provider
+require('brouzie.python_setup')
+
 vim.o.number = true
 vim.o.relativenumber = true
 -- How many lines i want as minimum distance to end of screen (up and down)
 vim.o.scrolloff = 10
+vim.sidescrolloff = 10
 vim.o.mouse = 'a'
 
 -- Controls what is copied to Global clipboard
-vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
-end)
+vim.o.clipboard = 'unnamedplus'
 
 
 -- Highlighting when yayænkin
@@ -26,6 +28,7 @@ vim.o.breakindent = true
 vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.o.cursorline = true
 
 -- Keep signcolumn on by default
 vim.o.signcolumn = 'yes'
@@ -34,7 +37,7 @@ vim.o.signcolumn = 'yes'
 -- Decrease mapped sequence wait time
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
-
+vim.o.tabstop = 4
 -- Configure how new splits should be opened
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -42,6 +45,7 @@ vim.o.splitbelow = true
 
 -- Handles error where you try to :q without having :w beforehand
 vim.o.confirm = true
+vim.opt.shiftwidth = 4
 
 
 -- This one takes you into normalmode if you are in terminal (:terminal)
@@ -52,6 +56,5 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc =  'Automatic unhighl
 
 require('brouzie.lazy')
 require('brouzie.plugins')
-
 print('Welcome')
 
