@@ -2,7 +2,7 @@ print('Hello from plugin space')
 
 require('brouzie.plugins.colorscheme')
 require('brouzie.plugins.telebinds')
-require('brouzie.plugins.lsp-config')
+--require('brouzie.plugins.mason-tool-installer')
 --require('brouzie.plugins.treesitter') moved
 require('brouzie.plugins.harpoon')
 --require('brouzie.plugins_config.fugitive')
