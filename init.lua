@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 vim.g.python3_host_prog = "/usr/bin/python3" -- Viktig for python provider
---require("brouzie.python_setup")
 
 vim.o.number = true
 vim.o.relativenumber = true
@@ -11,9 +10,7 @@ vim.o.scrolloff = 10
 vim.sidescrolloff = 10
 vim.o.mouse = "a"
 
-vim.schedule(function()
-	vim.o.clipboard = "unnamedplus"
-end)
+vim.opt.clipboard:append("unnamedplus")
 
 -- Highlighting when yayænkin
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -23,6 +20,31 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.hl.on_yank()
 	end,
 })
+
+-- Here comes a section i want to be moved to separate file later on see https://github.com/Sin-cy/dotfiles/blob/main/nvim/.config/nvim/lua/sethy/core/keymaps.lua
+local opts = { noremap = true, silent = true }
+-- Remember what was yææænked
+vim.keymap.set("v", "p", '"_dp', opts) -- Doesn't work?
+-- Copies or Yank to system clipboard
+vim.keymap.set("n", "<leader>Y", [["+Y]], opts)
+-- Copy filepath to the clipboard
+vim.keymap.set("n", "<leader>fp", function()
+	local filePath = vim.fn.expand("%:~") -- Gets the file path relative to the home directory
+	vim.fn.setreg("+", filePath) -- Copy the file path to the clipboard register
+	print("File path copied to clipboard: " .. filePath) -- Optional: print message to confirm
+end, { desc = "Copy file path to clipboard" })
+
+-- Toggle LSP diagnostics visibility
+local isLspDiagnosticsVisible = true
+vim.keymap.set("n", "<leader>lx", function()
+	isLspDiagnosticsVisible = not isLspDiagnosticsVisible
+	vim.diagnostic.config({
+		virtual_text = isLspDiagnosticsVisible,
+		underline = isLspDiagnosticsVisible,
+	})
+end, { desc = "Toggle LSP diagnostics" })
+
+------------------------------------------------
 
 vim.o.breakindent = true
 vim.o.undofile = true
@@ -46,12 +68,15 @@ vim.o.splitbelow = true
 vim.o.confirm = true
 vim.opt.shiftwidth = 4
 
--- This one takes you into normalmode if you are in terminal (:terminal)
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 vim.keymap.set("n", "<leader>pe", vim.cmd.Ex, { desc = 'Moving to "explorer"' })
 -- Using <Esc> when searching for patterns (/pattern), i will go back to 'n' and unhighlight everything
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Automatic unhighlight" })
 
+-- Really nice keymaps
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "moves lines down in visual selection" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "moves lines up in visual selection" })
+
 require("brouzie.lazy")
-require("brouzie.plugins")
+require("current-theme")
+require("brouzie.terminalpop")
 print("Welcome")
