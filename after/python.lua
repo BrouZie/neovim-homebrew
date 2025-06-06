@@ -1,5 +1,5 @@
 local job_id = 0
-vim.keymap.set("n", "<space>st", function()
+vim.keymap.set("n", "<space>to", function()
 	vim.cmd.vnew()
 	vim.cmd.term()
 	vim.cmd.wincmd("J")

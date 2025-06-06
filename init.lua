@@ -6,7 +6,7 @@ vim.g.python3_host_prog = "/usr/bin/python3" -- Viktig for python provider
 vim.o.number = true
 vim.o.relativenumber = true
 -- How many lines i want as minimum distance to end of screen (up and down)
-vim.o.scrolloff = 10
+vim.o.scrolloff = 999
 vim.sidescrolloff = 10
 vim.o.mouse = "a"
 
@@ -20,6 +20,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.hl.on_yank()
 	end,
 })
+
+-- Change the completion key to <C-i>
+--[[ vim.keymap.set("i", "<C-i>", function()
+	if vim.fn.pumvisible() == 1 then
+		return "<C-y>"
+	else
+		return "<C-i>"
+	end
+end, { expr = true, noremap = true }) ]]
 
 -- Here comes a section i want to be moved to separate file later on see https://github.com/Sin-cy/dotfiles/blob/main/nvim/.config/nvim/lua/sethy/core/keymaps.lua
 local opts = { noremap = true, silent = true }
@@ -50,7 +59,7 @@ vim.o.breakindent = true
 vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.o.cursorline = true
+vim.o.cursorline = false
 
 -- Keep signcolumn on by default
 vim.o.signcolumn = "yes"
