@@ -5,6 +5,8 @@ nvim
 
 spell/
 
+lua/current-theme.lua
+
 *.swp
 *.swx
 *.bak
