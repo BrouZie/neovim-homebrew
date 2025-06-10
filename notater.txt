@@ -1,9 +1,15 @@
 Nvim TODO_list:
 
 
+Virtual environment for python
+Legge til en timer på hvor lenge programmet har kjørt
+Python LSP er ikke helt optimalt og ting kan forandres fortsatt
+	- Liker ikke popup av alle de checksa
+	- Liker ikke at snippets kommer over tekst
+Bytte confirm av snippets knapp fra <C-y> til <C-i>!
+Overlapping keymaps
+Kanskje en liten oil.nvim etterhvert
 Legge til forandring som jeg har bilde av
-Finne ut av kopiering til clipboard
 Finne ut av which-key keymaps fuckup
 Skjekke githubben til han fyren
-Bytte confirm knapp fra y til i
 

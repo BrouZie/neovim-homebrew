@@ -27,7 +27,7 @@ return {
 					PmenuThumb = { bg = "#9ccfd8" }, -- Scrollbar thumb
 				},
 				enable = {
-					terminal = false,
+					terminal = true,
 					legacy_highlights = false, -- Improve compatibility for previous versions of Neovim
 					migrations = true, -- Handle deprecated options automatically
 				},

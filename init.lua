@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end
 end, { expr = true, noremap = true }) ]]
 
--- Here comes a section i want to be moved to separate file later on see https://github.com/Sin-cy/dotfiles/blob/main/nvim/.config/nvim/lua/sethy/core/keymaps.lua
+-- Here comes a section i want to have moved to separate file later on see https://github.com/Sin-cy/dotfiles/blob/main/nvim/.config/nvim/lua/sethy/core/keymaps.lua
 local opts = { noremap = true, silent = true }
 -- Remember what was yææænked
 vim.keymap.set("v", "p", '"_dp', opts) -- Doesn't work?
