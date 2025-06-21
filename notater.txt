@@ -1,6 +1,7 @@
 Nvim TODO_list:
 
 
+Jeg har ikke nerd font, me problem
 Virtual environment for python
 Legge til en timer på hvor lenge programmet har kjørt
 Python LSP er ikke helt optimalt og ting kan forandres fortsatt

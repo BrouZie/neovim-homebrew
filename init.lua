@@ -6,9 +6,10 @@ vim.g.python3_host_prog = "/usr/bin/python3" -- Viktig for python provider
 vim.o.number = true
 vim.o.relativenumber = true
 -- How many lines i want as minimum distance to end of screen (up and down)
-vim.o.scrolloff = 999
+vim.o.scrolloff = 100
 vim.sidescrolloff = 10
 vim.o.mouse = "a"
+vim.opt.background = "dark"
 
 vim.opt.clipboard:append("unnamedplus")
 
@@ -20,15 +21,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.hl.on_yank()
 	end,
 })
-
--- Change the completion key to <C-i>
---[[ vim.keymap.set("i", "<C-i>", function()
-	if vim.fn.pumvisible() == 1 then
-		return "<C-y>"
-	else
-		return "<C-i>"
-	end
-end, { expr = true, noremap = true }) ]]
 
 -- Here comes a section i want to have moved to separate file later on see https://github.com/Sin-cy/dotfiles/blob/main/nvim/.config/nvim/lua/sethy/core/keymaps.lua
 local opts = { noremap = true, silent = true }
@@ -43,6 +35,33 @@ vim.keymap.set("n", "<leader>fp", function()
 	print("File path copied to clipboard: " .. filePath) -- Optional: print message to confirm
 end, { desc = "Copy file path to clipboard" })
 
+vim.keymap.set("n", "<leader>pe", vim.cmd.Ex, { desc = 'Moving to "explorer"' })
+-- Using <Esc> when searching for patterns (/pattern), i will go back to 'n' and unhighlight everything
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Automatic unhighlight" })
+
+-- Really nice keymaps
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "moves lines down in visual selection" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "moves lines up in visual selection" })
+
+-- Lets me intent multiple times (without having to press v every time)
+vim.keymap.set("v", "<", "<gv", opts)
+vim.keymap.set("v", ">", ">gv", opts)
+
+-- Paste without replacing clipboard
+vim.keymap.set("x", "<leader>p", [["_dP"]])
+vim.keymap.set("v", "x", "'_x", opts) -- funker ikke??
+vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
+
+-- Replace the word cursor is on globally
+vim.keymap.set(
+	"n",
+	"<leader>r",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Replace word cursor is on globally" }
+)
+
+vim.keymap.set("n", "<leader>x", "<cmd>!python3 %<CR>", { silent = true, desc = "makes file executable" })
+
 -- Toggle LSP diagnostics visibility
 local isLspDiagnosticsVisible = true
 vim.keymap.set("n", "<leader>lx", function()
@@ -54,7 +73,6 @@ vim.keymap.set("n", "<leader>lx", function()
 end, { desc = "Toggle LSP diagnostics" })
 
 ------------------------------------------------
-
 vim.o.breakindent = true
 vim.o.undofile = true
 vim.o.ignorecase = true
@@ -76,14 +94,7 @@ vim.o.splitbelow = true
 -- Handles error where you try to :q without having :w beforehand
 vim.o.confirm = true
 vim.opt.shiftwidth = 4
-
-vim.keymap.set("n", "<leader>pe", vim.cmd.Ex, { desc = 'Moving to "explorer"' })
--- Using <Esc> when searching for patterns (/pattern), i will go back to 'n' and unhighlight everything
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Automatic unhighlight" })
-
--- Really nice keymaps
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "moves lines down in visual selection" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "moves lines up in visual selection" })
+vim.g.editorconfig = true
 
 require("brouzie.lazy")
 require("current-theme")
