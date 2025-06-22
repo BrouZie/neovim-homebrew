@@ -50,7 +50,6 @@ vim.keymap.set("v", ">", ">gv", opts)
 -- Paste without replacing clipboard
 vim.keymap.set("x", "<leader>p", [["_dP"]])
 vim.keymap.set("v", "x", "'_x", opts) -- funker ikke??
-vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
 
 -- Replace the word cursor is on globally
 vim.keymap.set(

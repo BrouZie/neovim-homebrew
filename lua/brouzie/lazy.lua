@@ -18,7 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ import = "brouzie.plugins" }, -- Imports from lua/brouzie/replace
-	{ "NMAC427/guess-indent.nvim" },
+	{ import = "brouzie.plugins.lsp" },
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
 		opts = {

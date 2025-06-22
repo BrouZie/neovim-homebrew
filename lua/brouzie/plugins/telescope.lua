@@ -39,13 +39,12 @@ return {
 		})
 
 		-- Keymaps
-
 		vim.keymap.set("n", "<leader>pg", builtin.live_grep, { desc = "Telescope live grep" })
 		vim.keymap.set("n", "<leader>pf", builtin.find_files, { desc = "Telescope find files" })
 		vim.keymap.set("n", "<leader>pk", builtin.keymaps, { desc = "Telescope keymaps" })
 		vim.keymap.set("n", "<leader>pc", builtin.current_buffer_fuzzy_find, { desc = "Fuzzy inside buffer" })
 		vim.keymap.set("n", "<leader>pr", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
-		vim.keymap.set("n", "<leader>pWs", function()
+		vim.keymap.set("n", "<leader>pws", function()
 			local word = vim.fn.expand("<cWORD>")
 			builtin.grep_string({ search = word })
 		end, { desc = "Find Connected Words under cursor" })
