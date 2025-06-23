@@ -110,9 +110,33 @@ return {
 				},
 			},
 		})
+		function get_python_path()
+			-- Check if there's an active virtual environment
+			local venv_path = os.getenv("VIRTUAL_ENV")
+			if venv_path then
+				return venv_path .. "/bin/python3"
+			else
+				-- get os name
+				local os_name = require("brouzie.utils").get_os()
+				-- get os interpreter path
+				if os_name == "windows" then
+					-- !If i become gay, set correct path!:
+					return "C:/python312"
+				elseif os_name == "linux" then
+					return "/usr/bin/python3"
+				else
+					-- Don't know what this is
+					return "path/to/something/interpreter"
+				end
+				-- Fallback to global Python interpreter
+			end
+		end
 		lspconfig.pylsp.setup({
 			capabilities = capabilities,
 			settings = {
+				python = {
+					pythonPath = get_python_path(),
+				},
 				pylsp = {
 					plugins = {
 						pyflakes = { enabled = false },
@@ -121,8 +145,8 @@ return {
 						yapf = { enabled = false },
 						mccabe = { enabled = false },
 						pylsp_mypy = { enabled = false },
-						pylsp_black = { enabled = false },
-						pylsp_isort = { enabled = false },
+						pylsp_black = { enabled = true },
+						pylsp_isort = { enabled = true, profile = "black" },
 					},
 				},
 			},

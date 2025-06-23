@@ -1,3 +1,4 @@
+require("brouzie.utils")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -6,7 +7,7 @@ vim.g.python3_host_prog = "/usr/bin/python3" -- Viktig for python provider
 vim.o.number = true
 vim.o.relativenumber = true
 -- How many lines i want as minimum distance to end of screen (up and down)
-vim.o.scrolloff = 100
+vim.o.scrolloff = 5
 vim.sidescrolloff = 10
 vim.o.mouse = "a"
 vim.opt.background = "dark"
@@ -35,7 +36,7 @@ vim.keymap.set("n", "<leader>fp", function()
 	print("File path copied to clipboard: " .. filePath) -- Optional: print message to confirm
 end, { desc = "Copy file path to clipboard" })
 
-vim.keymap.set("n", "<leader>pe", vim.cmd.Ex, { desc = 'Moving to "explorer"' })
+-- vim.keymap.set("n", "<leader>pe", vim.cmd.Ex, { desc = 'Moving to "explorer"' })
 -- Using <Esc> when searching for patterns (/pattern), i will go back to 'n' and unhighlight everything
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Automatic unhighlight" })
 
@@ -48,7 +49,7 @@ vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
 -- Paste without replacing clipboard
-vim.keymap.set("x", "<leader>p", [["_dP"]])
+vim.keymap.set("x", "<leader>P", [["_dP"]])
 vim.keymap.set("v", "x", "'_x", opts) -- funker ikke??
 
 -- Replace the word cursor is on globally
