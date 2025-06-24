@@ -146,6 +146,7 @@ return {
 						mccabe = { enabled = false },
 						pylsp_mypy = { enabled = false },
 						pylsp_black = { enabled = true },
+						-- pylsp_isort = { enabled = false },
 						pylsp_isort = { enabled = true, profile = "black" },
 					},
 				},
