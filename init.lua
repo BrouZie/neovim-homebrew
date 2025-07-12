@@ -35,7 +35,9 @@ vim.keymap.set("n", "<leader>fp", function()
 	vim.fn.setreg("+", filePath) -- Copy the file path to the clipboard register
 	print("File path copied to clipboard: " .. filePath) -- Optional: print message to confirm
 end, { desc = "Copy file path to clipboard" })
-
+-- CWD into working dir and prompt me please
+vim.keymap.set("n", "<leader>cd", "<cmd>cd %:p:h|pwd<CR>", { desc = "Change CWD to current file’s directory",
+})
 -- vim.keymap.set("n", "<leader>pe", vim.cmd.Ex, { desc = 'Moving to "explorer"' })
 -- Using <Esc> when searching for patterns (/pattern), i will go back to 'n' and unhighlight everything
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Automatic unhighlight" })
@@ -61,6 +63,12 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "<leader>x", "<cmd>!python3 %<CR>", { silent = true, desc = "makes file executable" })
+
+-- Move between panes
+vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
+vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
+vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
+vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
 -- Toggle LSP diagnostics visibility
 local isLspDiagnosticsVisible = true
