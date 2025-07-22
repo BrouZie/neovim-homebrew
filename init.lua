@@ -64,6 +64,11 @@ vim.keymap.set(
 
 vim.keymap.set("n", "<leader>x", "<cmd>!python3 %<CR>", { silent = true, desc = "makes file executable" })
 
+-- Split panes vert and hori
+vim.keymap.set("n", "<leader>v", ":vsplit<CR>")
+vim.keymap.set("n", "<leader>s", ":split<CR>")
+vim.keymap.set("n", "<leader>q", ":q<CR>")
+
 -- Move between panes
 vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
 vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
